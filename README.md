@@ -10,7 +10,7 @@ Company website and Trade onboarding demo.
 
 `trade/` contains real Supabase Auth integration and simulated exchange connections and paper trading for Binance, OKX, Coinbase, Upbit, Bybit, Bitget, Gate and KuCoin. It never accepts real exchange keys or sends real orders. Demo connections and trading activity are held in memory and reset on reload/sign-out.
 
-Supabase Auth requires the separate BAGCALI project's URL and publishable key. Without configuration, sign-up/sign-in are disabled with an explanatory message. No database schema for exchange connections, secrets or transactions is created in this phase.
+Supabase Auth requires the separate BAGCALI project's URL and publishable key. The BAGCALI public URL and publishable key are configured in `trade/config.js`; VITE_SUPABASE_* environment variables can override them. No private key is included. No database schema for exchange connections, secrets or transactions is created in this phase.
 
 ## Development
 

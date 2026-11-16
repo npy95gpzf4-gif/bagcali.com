@@ -1,8 +1,9 @@
 import { createClient } from '@supabase/supabase-js';
+import { publicSupabaseConfig } from './config.js';
 import { exchanges, prices, validateConnection, simulateOrder } from './model.js';
 const $ = id => document.getElementById(id);
-const url = import.meta.env.VITE_SUPABASE_URL || '';
-const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || '';
+const url = import.meta.env.VITE_SUPABASE_URL || publicSupabaseConfig.url;
+const key = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY || publicSupabaseConfig.publishableKey;
 const configured = /^https:\/\/[a-z0-9-]+\.supabase\.co$/.test(url) && key.startsWith('sb_publishable_');
 const supabase = configured ? createClient(url, key, { auth: { flowType: 'pkce', detectSessionInUrl: true } }) : null;
 let mode = 'login', activeUser = null, selected = null;
@@ -33,6 +34,7 @@ async function updateUser() {
   const user = error ? null : data.user;
   if (activeUser?.id !== user?.id) resetDemo();
   activeUser = user;
+  if (!$('update-password').hidden) return;
   $('auth-view').hidden = Boolean(user); $('workspace').hidden = !user; $('sign-out').hidden = !user;
   $('user-label').textContent = user?.email || '';
 }

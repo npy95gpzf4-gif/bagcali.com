@@ -71,3 +71,14 @@ Uygulamanın yolu /trade/ olduğundan geliştirme adresinde bu yolu açın.
 İşlem simülasyonu ve izin kontrolleri otomatik testlerden geçirildi; üretim derlemesi alındı. Farklı hesaplara erişim olmadığı için gerçek Supabase üyelik akışları, Netlify deploy'u ve bagcali.com proxy bağlantısı henüz doğrulanmadı. Tarayıcıda görsel doğrulama yapılmadı.
 
 Gerçek kullanıcıları davet etmeden önce kayıt, e-posta doğrulama, login, logout, şifre sıfırlama ve başka kullanıcıya ait verilerin erişilememesi kontrollerini tamamlayın. Bu sürüm gerçek API anahtarı veya gerçek emir kabul etmez.
+
+## BAGCALI Supabase bağlantısı
+
+Public proje yapılandırması trade/config.js dosyasına eklendi. Project URL: https://pcbhaksrjohyzcwablvj.supabase.co. API ayarları endpoint'i public key ile HTTP 200 verdi; Email kayıt açık, e-posta doğrulaması gerekli. Gerçek kayıt/giriş henüz uçtan uca test edilmedi.
+
+Supabase → Authentication → URL Configuration:
+- Site URL: https://bagcali.com/trade/
+- Redirect URLs: https://bagcali.com/trade/
+- Netlify önizlemesi kullanılacaksa ayrıca https://musical-puppy-bc8a7a.netlify.app/trade/
+
+GitHub downloads/bagcali-trade-cpanel.zip paketini public_html içine çıkarıp mevcut trade dosyalarının üzerine yazın. Ana site dosyaları bu pakette yer almaz. Kaydı deneyin, onay e-postasını aynı tarayıcıda açın, giriş ve şifre sıfırlamayı kontrol edin. SMTP ve URL ayarları bu public anahtarla değiştirilemez; proje panelinden yapılmalıdır.
