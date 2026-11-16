@@ -1,0 +1,20 @@
+{
+  "name": "bagcali",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "node scripts/build.mjs",
+    "test": "node --test trade/model.test.js"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "2.119.0"
+  },
+  "devDependencies": {
+    "vite": "8.3.8"
+  },
+  "engines": {
+    "node": ">=24 <25"
+  }
+}
